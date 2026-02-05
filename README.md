@@ -188,6 +188,6 @@ Si te resulta útil, dale una estrella ⭐ en GitHub!
 
 ---
 
-**Autor**: TU_NOMBRE  
+**Autor**: Valdecon
 **Versión**: 2.1.0  
 **Última actualización**: Febrero 2026
