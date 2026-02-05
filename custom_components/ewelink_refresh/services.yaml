@@ -1,0 +1,11 @@
+refresh:
+  name: Actualizar dispositivos
+  description: Fuerza la actualización de los dispositivos con medidor de consumo
+  fields:
+    device_ids:
+      name: IDs de dispositivos
+      description: Lista de IDs de dispositivos a actualizar (opcional, si no se especifica actualiza todos)
+      required: false
+      example: ["1001ef4bf8", "1001ef5c9a"]
+      selector:
+        object:

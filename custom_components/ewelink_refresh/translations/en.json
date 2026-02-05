@@ -1,0 +1,35 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure eWeLink Refresh",
+        "description": "Enter your eWeLink credentials to auto-discover power meter devices",
+        "data": {
+          "email": "eWeLink Email",
+          "password": "Password",
+          "region": "Region",
+          "auto_discover": "Auto-discover devices",
+          "scan_interval": "Update interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid email or password",
+      "cannot_connect": "Cannot connect to eWeLink",
+      "unknown": "Unknown error"
+    },
+    "abort": {
+      "already_configured": "This account is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "eWeLink Refresh Options",
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        }
+      }
+    }
+  }
+}
