@@ -1,0 +1,7 @@
+{
+  "name": "eWeLink Power Meter Refresh",
+  "render_readme": true,
+  "domains": ["ewelink_refresh"],
+  "homeassistant": "2024.1.0",
+  "iot_class": "Cloud Polling"
+}
