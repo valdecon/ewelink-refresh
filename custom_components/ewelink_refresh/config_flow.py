@@ -6,6 +6,7 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, CONF_SCAN_INTERVAL
 from homeassistant.core import callback
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers import selector
 
 from .const import (
     DOMAIN,
@@ -69,12 +70,28 @@ class EWeLinkRefreshConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 _LOGGER.error("Authentication failed - check credentials, region, and country code")
 
         # Mostrar formulario
+        country_options = [
+            selector.SelectOptionDict(value=code, label=f"{name} ({code})")
+            for code, name in COUNTRY_CODES.items()
+        ]
         data_schema = vol.Schema(
             {
                 vol.Required(CONF_EMAIL): str,
                 vol.Required(CONF_PASSWORD): str,
-                vol.Optional(CONF_REGION, default=DEFAULT_REGION): vol.In(REGIONS),
-                vol.Optional(CONF_COUNTRY_CODE, default=DEFAULT_COUNTRY_CODE): vol.In(COUNTRY_CODES),
+                vol.Optional(CONF_REGION, default=DEFAULT_REGION): selector.SelectSelector(
+                    selector.SelectSelectorConfig(
+                        options=REGIONS,
+                        mode=selector.SelectSelectorMode.DROPDOWN,
+                    )
+                ),
+                vol.Optional(
+                    CONF_COUNTRY_CODE, default=DEFAULT_COUNTRY_CODE
+                ): selector.SelectSelector(
+                    selector.SelectSelectorConfig(
+                        options=country_options,
+                        mode=selector.SelectSelectorMode.DROPDOWN,
+                    )
+                ),
                 vol.Optional(CONF_AUTO_DISCOVER, default=True): bool,
                 vol.Optional(
                     CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL

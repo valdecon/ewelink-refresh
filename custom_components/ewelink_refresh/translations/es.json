@@ -8,6 +8,7 @@
           "email": "Email de eWeLink",
           "password": "Contraseña",
           "region": "Región",
+          "country_code": "Código de país",
           "auto_discover": "Auto-descubrir dispositivos",
           "scan_interval": "Intervalo de actualización (segundos)"
         }
