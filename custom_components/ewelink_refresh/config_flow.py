@@ -11,9 +11,12 @@ from .const import (
     DOMAIN,
     CONF_REGION,
     CONF_AUTO_DISCOVER,
+    CONF_COUNTRY_CODE,
     DEFAULT_SCAN_INTERVAL,
     DEFAULT_REGION,
+    DEFAULT_COUNTRY_CODE,
     REGIONS,
+    COUNTRY_CODES,
 )
 from .ewelink_api import EWeLinkRefreshAPI
 
@@ -35,11 +38,13 @@ class EWeLinkRefreshConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 email=user_input[CONF_EMAIL],
                 password=user_input[CONF_PASSWORD],
                 region=user_input.get(CONF_REGION, DEFAULT_REGION),
+                country_code=user_input.get(CONF_COUNTRY_CODE, DEFAULT_COUNTRY_CODE),
                 hass=self.hass,
             )
 
             # Intentar login
-            if await self.hass.async_add_executor_job(api.login):
+            login_result = await self.hass.async_add_executor_job(api.login)
+            if login_result:
                 # Login exitoso
                 _LOGGER.info("eWeLink authentication successful")
                 
@@ -61,6 +66,7 @@ class EWeLinkRefreshConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 )
             else:
                 errors["base"] = "invalid_auth"
+                _LOGGER.error("Authentication failed - check credentials, region, and country code")
 
         # Mostrar formulario
         data_schema = vol.Schema(
@@ -68,6 +74,7 @@ class EWeLinkRefreshConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 vol.Required(CONF_EMAIL): str,
                 vol.Required(CONF_PASSWORD): str,
                 vol.Optional(CONF_REGION, default=DEFAULT_REGION): vol.In(REGIONS),
+                vol.Optional(CONF_COUNTRY_CODE, default=DEFAULT_COUNTRY_CODE): vol.In(COUNTRY_CODES),
                 vol.Optional(CONF_AUTO_DISCOVER, default=True): bool,
                 vol.Optional(
                     CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL
@@ -79,6 +86,10 @@ class EWeLinkRefreshConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="user",
             data_schema=data_schema,
             errors=errors,
+            description_placeholders={
+                "region_help": "Región del servidor eWeLink (Europa: eu, América: us)",
+                "country_help": "Código del país donde registraste tu cuenta eWeLink",
+            },
         )
 
     @staticmethod

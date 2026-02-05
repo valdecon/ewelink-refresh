@@ -3,18 +3,19 @@
     "step": {
       "user": {
         "title": "Configurar eWeLink Refresh",
-        "description": "Ingresa tus credenciales de eWeLink para auto-detectar dispositivos con medidor de consumo",
+        "description": "Ingresa tus credenciales de eWeLink. IMPORTANTE: Usa la región y código de país donde REGISTRASTE tu cuenta.",
         "data": {
           "email": "Email de eWeLink",
           "password": "Contraseña",
-          "region": "Región",
+          "region": "Región del servidor",
+          "country_code": "Código de país",
           "auto_discover": "Auto-descubrir dispositivos",
           "scan_interval": "Intervalo de actualización (segundos)"
         }
       }
     },
     "error": {
-      "invalid_auth": "Email o contraseña incorrectos",
+      "invalid_auth": "Credenciales incorrectas. Verifica email, contraseña, región y código de país.",
       "cannot_connect": "No se puede conectar a eWeLink",
       "unknown": "Error desconocido"
     },

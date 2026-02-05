@@ -14,11 +14,12 @@ _LOGGER = logging.getLogger(__name__)
 class EWeLinkRefreshAPI:
     """eWeLink API client."""
 
-    def __init__(self, email, password, region="eu", hass=None):
+    def __init__(self, email, password, region="eu", country_code="+34", hass=None):
         """Initialize the API client."""
         self.email = email
         self.password_hash = self._hash_password(password)
         self.region = region
+        self.country_code = country_code
         self.base_url = API_URLS.get(region, API_URLS["eu"])
         self.token = None
         self.api_key = None
@@ -52,7 +53,7 @@ class EWeLinkRefreshAPI:
         payload = {
             "email": self.email,
             "password": self.password_hash,
-            "countryCode": "+34",
+            "countryCode": self.country_code,
         }
 
         try:
@@ -73,7 +74,10 @@ class EWeLinkRefreshAPI:
                 _LOGGER.info("eWeLink authentication successful")
                 return True
             else:
-                _LOGGER.error(f"Login error: {data.get('msg', 'Unknown error')}")
+                error_msg = data.get('msg', 'Unknown error')
+                error_code = data.get('error', 'Unknown')
+                _LOGGER.error(f"Login error (code {error_code}): {error_msg}")
+                _LOGGER.error(f"Check: region={self.region}, country_code={self.country_code}")
                 return False
 
         except requests.exceptions.SSLError:

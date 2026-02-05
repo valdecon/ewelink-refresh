@@ -6,13 +6,39 @@ DOMAIN = "ewelink_refresh"
 CONF_REGION = "region"
 CONF_AUTO_DISCOVER = "auto_discover"
 CONF_DEVICES = "devices"
+CONF_COUNTRY_CODE = "country_code"
 
 # Defaults
 DEFAULT_SCAN_INTERVAL = 60
 DEFAULT_REGION = "eu"
+DEFAULT_COUNTRY_CODE = "+34"
 
 # Regions
 REGIONS = ["eu", "us", "cn", "as"]
+
+# Country Codes (países más comunes)
+COUNTRY_CODES = {
+    "+34": "España",
+    "+1": "Estados Unidos / Canadá",
+    "+44": "Reino Unido",
+    "+33": "Francia",
+    "+49": "Alemania",
+    "+39": "Italia",
+    "+351": "Portugal",
+    "+52": "México",
+    "+54": "Argentina",
+    "+56": "Chile",
+    "+57": "Colombia",
+    "+58": "Venezuela",
+    "+51": "Perú",
+    "+55": "Brasil",
+    "+86": "China",
+    "+91": "India",
+    "+81": "Japón",
+    "+82": "Corea del Sur",
+    "+61": "Australia",
+    "+64": "Nueva Zelanda",
+}
 
 # API URLs
 API_URLS = {
