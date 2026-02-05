@@ -1,0 +1,63 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configurar eWeLink Refresh",
+        "description": "Ingresa tus credenciales de eWeLink",
+        "data": {
+          "email": "Email de eWeLink",
+          "password": "Contraseña",
+          "region": "Región",
+          "auto_discover": "Auto-descubrir dispositivos",
+          "scan_interval": "Intervalo de actualización (segundos)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Email o contraseña incorrectos",
+      "cannot_connect": "No se puede conectar a eWeLink",
+      "unknown": "Error desconocido"
+    },
+    "abort": {
+      "already_configured": "Esta cuenta ya está configurada"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de eWeLink Refresh",
+        "data": {
+          "scan_interval": "Intervalo de actualización (segundos)"
+        }
+      }
+    }
+  }
+}
+```
+
+5. Click en **"Commit changes..."**
+6. Mensaje: `Add strings.json for UI configuration`
+7. Click en **"Commit changes"**
+
+---
+
+### 2️⃣ **Crear el Nuevo Release v2.1.1**
+
+1. **Ve directamente a**: https://github.com/valdecon/ewelink-refresh/releases/new
+
+2. **Completa el formulario:**
+
+   **Choose a tag:**
+```
+   v2.1.1
+```
+   (Aparecerá: "+ Create new tag: v2.1.1 on publish")
+
+   **Target:**
+```
+   main
+```
+
+   **Release title:**
+```
+   v2.1.1 - Fix UI Configuration
