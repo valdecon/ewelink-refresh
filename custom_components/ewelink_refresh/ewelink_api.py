@@ -51,6 +51,7 @@ class EWeLinkRefreshAPI:
         }
 
         payload = {
+            "appid": APP_ID,
             "email": self.email,
             "password": self.password_hash,
             "countryCode": self.country_code,
