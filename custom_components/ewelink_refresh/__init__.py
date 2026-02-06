@@ -76,13 +76,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         """Refresh all devices."""
         _LOGGER.debug("Refreshing eWeLink power meters")
         for device in devices:
-            if not device.get("enabled", True):
-                continue
-            device_id = device.get("id")
-            if not device_id:
-                _LOGGER.warning("Skipping device without id: %s", device)
-                continue
-            await hass.async_add_executor_job(api.refresh_device, device_id)
+            if device.get("enabled", True):
+                device_id = device["id"]
+                await hass.async_add_executor_job(api.refresh_device, device_id)
     
     # Ejecutar al inicio
     await async_refresh()
@@ -106,9 +102,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         else:
             # Refrescar específicos
             for device_id in device_ids:
-                if not device_id:
-                    _LOGGER.warning("Skipping empty device id in service call")
-                    continue
                 await hass.async_add_executor_job(api.refresh_device, device_id)
     
     hass.services.async_register(

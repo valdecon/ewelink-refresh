@@ -48,7 +48,7 @@ Y cualquier dispositivo eWeLink con parámetros de `power`, `voltage` o `current
 1. Abre HACS en Home Assistant
 2. Haz clic en los **3 puntos** (esquina superior derecha)
 3. Selecciona **Repositorios personalizados**
-4. Añade esta URL: `https://github.com/valdecon/ewelink-refresh`
+4. Añade esta URL: `https://github.com/TU_USUARIO/ewelink-refresh`
 5. Categoría: **Integration**
 6. Haz clic en **AÑADIR**
 7. Busca "eWeLink Power Meter Refresh"
@@ -176,7 +176,7 @@ logger:
 
 ## 🤝 Contribuir
 
-Reporta bugs o solicita features en [GitHub Issues](https://github.com/valdecon/ewelink-refresh/issues).
+Reporta bugs o solicita features en [GitHub Issues](https://github.com/TU_USUARIO/ewelink-refresh/issues).
 
 ## 📜 Licencia
 
@@ -188,6 +188,6 @@ Si te resulta útil, dale una estrella ⭐ en GitHub!
 
 ---
 
-**Autor**: Valdecon  
-**Versión**: 2.1.2  
+**Autor**: TU_NOMBRE  
+**Versión**: 2.1.0  
 **Última actualización**: Febrero 2026
